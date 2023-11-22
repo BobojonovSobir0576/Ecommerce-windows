@@ -9,6 +9,10 @@ class PlasticWindowsCategories(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Категории пластиковых окон"
+        verbose_name_plural = "Категории пластиковых окон"
+
 
 
 class PlasticWindowsGetCategories(models.Model):
@@ -51,6 +55,9 @@ class PlasticWindowsGetCategories(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Пластиковые окна Получить категории"
+        verbose_name_plural = "Пластиковые окна Получить категории"
 
 class Contacts(models.Model):
     full_name = models.CharField(
@@ -68,6 +75,9 @@ class Contacts(models.Model):
     def __str__(self):
         return self.full_name
 
+    class Meta:
+        verbose_name = "Контакты"
+        verbose_name_plural = "Контакты"
 
 class Windows(models.Model):
     background = models.ImageField(
@@ -89,6 +99,9 @@ class Windows(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Окна"
+        verbose_name_plural = "Окна"
 
 class WindowsImages(models.Model):
     windows = models.ForeignKey(
@@ -96,7 +109,7 @@ class WindowsImages(models.Model):
         on_delete=models.CASCADE,
         null=True, blank=True,
         verbose_name='Идентификатор Окно',
-        related_name=''
+        related_name='windows_id'
     )
     background = models.ImageField(
         upload_to='background/',
@@ -107,6 +120,9 @@ class WindowsImages(models.Model):
     def __str__(self):
         return self.windows.title
 
+    class Meta:
+        verbose_name = "Образы Windows"
+        verbose_name_plural = "Образы Windows"
 
 class OurWork(models.Model):
     country = models.CharField(
@@ -123,6 +139,9 @@ class OurWork(models.Model):
     def __str__(self):
         return self.country
 
+    class Meta:
+        verbose_name = "Наша работа"
+        verbose_name_plural = "Наша работа"
 
 class OurServices(models.Model):
     name = models.CharField(
@@ -139,9 +158,12 @@ class OurServices(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Наши услуги"
+        verbose_name_plural = "Наши услуги"
 
 class OurServiceGet(models.Model):
-    ourservice = models.ForeignKey(
+    ourservices = models.ForeignKey(
         OurServices,
         on_delete=models.CASCADE,
         verbose_name='',
@@ -161,6 +183,9 @@ class OurServiceGet(models.Model):
     def __str__(self):
         return self.content
 
+    class Meta:
+        verbose_name = "Получите наши услуги"
+        verbose_name_plural = "Получите наши услуги"
 
 class Plastics(models.Model):
     name = models.CharField(
@@ -173,3 +198,7 @@ class Plastics(models.Model):
         null=True, blank=True,
         verbose_name=''
     )
+
+    class Meta:
+        verbose_name = "Пластмассы"
+        verbose_name_plural = "Пластмассы"
